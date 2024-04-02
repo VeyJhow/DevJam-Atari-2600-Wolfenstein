@@ -2,22 +2,19 @@ extends CharacterBody2D
 
 signal hit
 
-var speed = 20
-var speed_adjust = 0.2
+var speed = 300
+var direction
+var array_direction : Array = [Vector2.LEFT,Vector2.RIGHT,Vector2.UP,Vector2.DOWN]
 
 func _ready():
-	start_patrol()
+	velocity = array_direction.pick_random() * 0.01
 
 func _physics_process(_delta):
 	var collision = move_and_collide(velocity * speed)
 	if collision:
-		velocity = velocity.bounce(collision.get_normal())
+		var variavel = array_direction.pick_random()
+		velocity = variavel * 0.01
 
-func _on_player_collision_body_entered(body):
+func _on_player_area_body_entered(body):
 	if body is player_grey:
 		hit.emit()
-
-func start_patrol():
-	randomize()
-	velocity.x = [-0.5,0.5][randi() % 2 ] * speed_adjust
-	velocity.y = [-0.5,0.5][randi() % 2 ] * speed_adjust
