@@ -1,6 +1,7 @@
-[gd_scene load_steps=24 format=3 uid="uid://dch4bk8edfu40"]
+[gd_scene load_steps=25 format=3 uid="uid://dch4bk8edfu40"]
 
 [ext_resource type="Texture2D" uid="uid://d3p03o18gxw41" path="res://assets/sprites/levels/level_8_layout.png" id="1_tkpjq"]
+[ext_resource type="Script" path="res://test_1.gd" id="1_wvilt"]
 [ext_resource type="PackedScene" uid="uid://hevwhxrskx2v" path="res://player_grey.tscn" id="2_j8isx"]
 [ext_resource type="PackedScene" uid="uid://bw3itbfrtmhs7" path="res://patrol_bot.tscn" id="3_1tnyf"]
 
@@ -65,13 +66,15 @@ size = Vector2(28, 24)
 size = Vector2(28, 20)
 
 [node name="level_8" type="Node2D"]
+script = ExtResource("1_wvilt")
 
 [node name="Level8Layout" type="Sprite2D" parent="."]
 position = Vector2(576, 324)
 texture = ExtResource("1_tkpjq")
 
 [node name="walls" type="StaticBody2D" parent="."]
-collision_layer = 5
+visible = false
+collision_layer = 4
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="walls"]
@@ -241,35 +244,42 @@ collision_mask = 12
 [node name="patrol_bot" parent="." instance=ExtResource("3_1tnyf")]
 position = Vector2(224, 328)
 scale = Vector2(1.9, 1.9)
-collision_layer = 3
+collision_layer = 2
 collision_mask = 6
 
 [node name="patrol_bot2" parent="." instance=ExtResource("3_1tnyf")]
 position = Vector2(928, 328)
 scale = Vector2(1.9, 1.9)
-collision_layer = 3
+collision_layer = 2
 collision_mask = 6
 
 [node name="patrol_bot3" parent="." instance=ExtResource("3_1tnyf")]
 position = Vector2(442, 600)
 scale = Vector2(1.9, 1.9)
-collision_layer = 3
+collision_layer = 2
 collision_mask = 6
 
 [node name="patrol_bot4" parent="." instance=ExtResource("3_1tnyf")]
 position = Vector2(708, 600)
 scale = Vector2(1.9, 1.9)
-collision_layer = 3
+collision_layer = 2
 collision_mask = 6
 
 [node name="patrol_bot5" parent="." instance=ExtResource("3_1tnyf")]
 position = Vector2(446, 132)
 scale = Vector2(1.9, 1.9)
-collision_layer = 3
+collision_layer = 2
 collision_mask = 6
 
 [node name="patrol_bot6" parent="." instance=ExtResource("3_1tnyf")]
 position = Vector2(708, 132)
 scale = Vector2(1.9, 1.9)
-collision_layer = 3
+collision_layer = 2
 collision_mask = 6
+
+[connection signal="hit" from="patrol_bot" to="." method="_on_patrol_bot_hit"]
+[connection signal="hit" from="patrol_bot2" to="." method="_on_patrol_bot_hit"]
+[connection signal="hit" from="patrol_bot3" to="." method="_on_patrol_bot_hit"]
+[connection signal="hit" from="patrol_bot4" to="." method="_on_patrol_bot_hit"]
+[connection signal="hit" from="patrol_bot5" to="." method="_on_patrol_bot_hit"]
+[connection signal="hit" from="patrol_bot6" to="." method="_on_patrol_bot_hit"]

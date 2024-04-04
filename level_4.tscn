@@ -1,5 +1,6 @@
-[gd_scene load_steps=19 format=3 uid="uid://bl6femyvtoyk5"]
+[gd_scene load_steps=20 format=3 uid="uid://bl6femyvtoyk5"]
 
+[ext_resource type="Script" path="res://test_1.gd" id="1_wvkq4"]
 [ext_resource type="Texture2D" uid="uid://dxv8p3qrgm2xf" path="res://assets/sprites/levels/level_4_layout.png" id="1_x7ufp"]
 [ext_resource type="PackedScene" uid="uid://hevwhxrskx2v" path="res://player_grey.tscn" id="2_pofiq"]
 [ext_resource type="PackedScene" uid="uid://bw3itbfrtmhs7" path="res://patrol_bot.tscn" id="3_88jrq"]
@@ -50,13 +51,15 @@ size = Vector2(28, 36)
 size = Vector2(28, 24)
 
 [node name="level_4" type="Node2D"]
+script = ExtResource("1_wvkq4")
 
 [node name="lv4_background" type="Sprite2D" parent="."]
 position = Vector2(576, 324)
 texture = ExtResource("1_x7ufp")
 
 [node name="walls" type="StaticBody2D" parent="."]
-collision_layer = 5
+visible = false
+collision_layer = 4
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="walls"]
@@ -234,13 +237,13 @@ collision_mask = 12
 [node name="patrol_bot" parent="." instance=ExtResource("3_88jrq")]
 position = Vector2(142, 262)
 scale = Vector2(1.9, 1.9)
-collision_layer = 3
+collision_layer = 2
 collision_mask = 6
 
 [node name="patrol_bot2" parent="." instance=ExtResource("3_88jrq")]
 position = Vector2(1010, 262)
 scale = Vector2(1.9, 1.9)
-collision_layer = 3
+collision_layer = 2
 collision_mask = 6
 
 [node name="patrol_bot3" parent="." instance=ExtResource("3_88jrq")]
@@ -252,17 +255,24 @@ collision_mask = 6
 [node name="patrol_bot4" parent="." instance=ExtResource("3_88jrq")]
 position = Vector2(1010, 604)
 scale = Vector2(1.9, 1.9)
-collision_layer = 3
+collision_layer = 2
 collision_mask = 6
 
 [node name="patrol_bot5" parent="." instance=ExtResource("3_88jrq")]
-position = Vector2(416, 181)
+position = Vector2(222, 188)
 scale = Vector2(1.9, 1.9)
-collision_layer = 3
+collision_layer = 2
 collision_mask = 6
 
 [node name="patrol_bot6" parent="." instance=ExtResource("3_88jrq")]
-position = Vector2(737, 181)
+position = Vector2(930, 330)
 scale = Vector2(1.9, 1.9)
-collision_layer = 3
+collision_layer = 2
 collision_mask = 6
+
+[connection signal="hit" from="patrol_bot" to="." method="_on_patrol_bot_hit"]
+[connection signal="hit" from="patrol_bot2" to="." method="_on_patrol_bot_hit"]
+[connection signal="hit" from="patrol_bot3" to="." method="_on_patrol_bot_hit"]
+[connection signal="hit" from="patrol_bot4" to="." method="_on_patrol_bot_hit"]
+[connection signal="hit" from="patrol_bot5" to="." method="_on_patrol_bot_hit"]
+[connection signal="hit" from="patrol_bot6" to="." method="_on_patrol_bot_hit"]
