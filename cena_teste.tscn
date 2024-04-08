@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://bsmqnurymaba1"]
+
+[ext_resource type="PackedScene" uid="uid://hevwhxrskx2v" path="res://player_grey.tscn" id="1_w6jdg"]
+[ext_resource type="Script" path="res://scripts/enemy_movement.gd" id="2_a8uw1"]
+[ext_resource type="Texture2D" uid="uid://bhwisdu2gemnv" path="res://assets/sprites/arcade_enemy_patrol.png" id="3_avsnf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t6dsb"]
+size = Vector2(32, 24)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uwj01"]
+radius = 74.2428
+
+[node name="cena_teste" type="Node2D"]
+
+[node name="player_grey" parent="." instance=ExtResource("1_w6jdg")]
+position = Vector2(425, 183)
+
+[node name="test_enemy" type="CharacterBody2D" parent="."]
+position = Vector2(292, 175)
+script = ExtResource("2_a8uw1")
+
+[node name="Sprite2D" type="Sprite2D" parent="test_enemy"]
+texture = ExtResource("3_avsnf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="test_enemy"]
+shape = SubResource("RectangleShape2D_t6dsb")
+
+[node name="search_area" type="Area2D" parent="test_enemy"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="test_enemy/search_area"]
+shape = SubResource("CircleShape2D_uwj01")
