@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=3 uid="uid://b38ntgjjqeyn4"]
+
+[ext_resource type="Texture2D" uid="uid://ddnym487ahqv2" path="res://assets/sprites/inside_levels/inside_layout_h_14.png" id="1_cusf4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l1puw"]
+size = Vector2(1020, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qds38"]
+size = Vector2(28, 276)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d4irg"]
+size = Vector2(56, 244)
+
+[node name="inside_level_h_14" type="Node2D"]
+
+[node name="InsideLayoutH14" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+texture = ExtResource("1_cusf4")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(576, 10)
+shape = SubResource("RectangleShape2D_l1puw")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(576, 638)
+shape = SubResource("RectangleShape2D_l1puw")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(80, 494)
+shape = SubResource("RectangleShape2D_qds38")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(80, 154)
+shape = SubResource("RectangleShape2D_qds38")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1072, 154)
+shape = SubResource("RectangleShape2D_qds38")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1072, 494)
+shape = SubResource("RectangleShape2D_qds38")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(806, 510)
+shape = SubResource("RectangleShape2D_d4irg")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(806, 138)
+shape = SubResource("RectangleShape2D_d4irg")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(346, 138)
+shape = SubResource("RectangleShape2D_d4irg")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(346, 510)
+shape = SubResource("RectangleShape2D_d4irg")
