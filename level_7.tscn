@@ -1,6 +1,6 @@
 [gd_scene load_steps=27 format=3 uid="uid://cjbyplj7272gv"]
 
-[ext_resource type="Script" path="res://test_1.gd" id="1_53336"]
+[ext_resource type="Script" path="res://arcade_level_1.gd" id="1_53336"]
 [ext_resource type="Texture2D" uid="uid://dfqfs8xy6qaya" path="res://assets/sprites/level_7_layout.png" id="1_jh5b0"]
 [ext_resource type="PackedScene" uid="uid://hevwhxrskx2v" path="res://player_grey.tscn" id="3_i4s0d"]
 [ext_resource type="PackedScene" uid="uid://bw3itbfrtmhs7" path="res://patrol_bot.tscn" id="4_v1tya"]

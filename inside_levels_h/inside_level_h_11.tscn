@@ -20,7 +20,7 @@ size = Vector2(468, 60)
 position = Vector2(576, 324)
 texture = ExtResource("1_tadem")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="StaticBody2D" parent="."]
 collision_layer = 4
 collision_mask = 3
 
