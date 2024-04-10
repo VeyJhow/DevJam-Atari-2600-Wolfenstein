@@ -430,7 +430,7 @@ shape = SubResource("RectangleShape2D_iwo0d")
 [connection signal="body_entered" from="enter_vertical_1" to="." method="_on_enter_vertical_1_body_entered"]
 [connection signal="body_entered" from="enter_vertical_2" to="." method="_on_enter_vertical_2_body_entered"]
 [connection signal="body_entered" from="enter_vertical_3" to="." method="_on_enter_vertical_3_body_entered"]
-[connection signal="body_entered" from="enter_vertical_4" to="." method="_on_enter_vertical_4_body_exited"]
+[connection signal="body_entered" from="enter_vertical_4" to="." method="_on_enter_vertical_4_body_entered"]
 [connection signal="body_entered" from="enter_vertical_5" to="." method="_on_enter_vertical_5_body_entered"]
 [connection signal="body_entered" from="enter_vertical_6" to="." method="_on_enter_vertical_6_body_entered"]
 [connection signal="body_entered" from="enter_vertical_7" to="." method="_on_enter_vertical_7_body_entered"]

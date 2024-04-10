@@ -75,13 +75,13 @@ func _on_enter_vertical_2_body_entered(body):
 
 func _on_return_area_1_body_entered(body):
 	if body is player_grey:
-		player.position = Vector2(272,144)
+		player.position = Vector2(883,145)
 		camera.position = Vector2(576,324)
 		player_invulnerability()
 
 func _on_return_area_2_body_entered(body):
 	if body is player_grey:
-		player.position = Vector2(272,87)
+		player.position = Vector2(883,84)
 		camera.position = Vector2(576,324)
 		player_invulnerability()
 
@@ -97,13 +97,13 @@ func _on_enter_vertical_4_body_entered(body):
 
 func _on_return_area_3_body_entered(body):
 	if body is player_grey:
-		player.position = Vector2(882,145)
+		player.position = Vector2(269,561)
 		camera.position = Vector2(576,324)
 		player_invulnerability()
 
 func _on_return_area_4_body_entered(body):
 	if body is player_grey:
-		player.position = Vector2(882,86)
+		player.position = Vector2(269,501)
 		camera.position = Vector2(576,324)
 		player_invulnerability()
 
@@ -119,13 +119,13 @@ func _on_enter_vertical_6_body_entered(body):
 
 func _on_return_area_5_body_entered(body):
 	if body is player_grey:
-		player.position = Vector2(191,530)
+		player.position = Vector2(796,530)
 		camera.position = Vector2(576,324)
 		player_invulnerability()
 
 func _on_return_area_6_body_entered(body):
 	if body is player_grey:
-		player.position = Vector2(355,530)
+		player.position = Vector2(964,530)
 		camera.position = Vector2(576,324)
 		player_invulnerability()
 
@@ -141,13 +141,12 @@ func _on_enter_vertical_8_body_entered(body):
 
 func _on_return_area_7_body_entered(body):
 	if body is player_grey:
-		player.position = Vector2(804,530)
+		player.position = Vector2(190,114)
 		camera.position = Vector2(576,324)
 		player_invulnerability()
 
 func _on_return_area_8_body_entered(body):
 	if body is player_grey:
-		player.position = Vector2(962,530)
+		player.position = Vector2(353,114)
 		camera.position = Vector2(576,324)
 		player_invulnerability()
-
