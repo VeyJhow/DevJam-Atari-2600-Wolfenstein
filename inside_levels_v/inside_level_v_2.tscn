@@ -1,6 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://cqq026db3s0go"]
+[gd_scene load_steps=13 format=3 uid="uid://cqq026db3s0go"]
 
+[ext_resource type="Script" path="res://inside_levels_h/item_scene.gd" id="1_0c1t8"]
 [ext_resource type="Texture2D" uid="uid://cp4ptxq4nljyu" path="res://assets/sprites/inside_layout_v_2.png" id="1_ok83o"]
+[ext_resource type="PackedScene" uid="uid://b0hg5omoq654a" path="res://item.tscn" id="2_4bxb1"]
+[ext_resource type="PackedScene" uid="uid://5pmdmj5q2obg" path="res://enemy.tscn" id="4_xmwq8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x1qrr"]
 size = Vector2(28, 640)
@@ -27,6 +30,7 @@ size = Vector2(340, 68)
 size = Vector2(340, 212)
 
 [node name="inside_level_v_2" type="Node2D"]
+script = ExtResource("1_0c1t8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(576, 324)
@@ -76,3 +80,24 @@ shape = SubResource("RectangleShape2D_md2cn")
 [node name="CollisionShape2D10" type="CollisionShape2D" parent="walls"]
 position = Vector2(888, 526)
 shape = SubResource("RectangleShape2D_md2cn")
+
+[node name="item" parent="." instance=ExtResource("2_4bxb1")]
+position = Vector2(995, 352)
+scale = Vector2(0.5, 0.5)
+
+[node name="enemy" parent="." instance=ExtResource("4_xmwq8")]
+position = Vector2(333, 127)
+scale = Vector2(0.7, 0.7)
+
+[node name="enemy2" parent="." instance=ExtResource("4_xmwq8")]
+position = Vector2(362, 367)
+scale = Vector2(0.7, 0.7)
+
+[node name="enemy3" parent="." instance=ExtResource("4_xmwq8")]
+position = Vector2(766, 361)
+scale = Vector2(0.7, 0.7)
+
+[connection signal="body_entered" from="item" to="." method="_on_item_body_entered"]
+[connection signal="hit" from="enemy" to="." method="_on_enemy_hit"]
+[connection signal="hit" from="enemy2" to="." method="_on_enemy_hit"]
+[connection signal="hit" from="enemy3" to="." method="_on_enemy_hit"]

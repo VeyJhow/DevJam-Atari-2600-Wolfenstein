@@ -1,6 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://pviklv1mnd1d"]
+[gd_scene load_steps=9 format=3 uid="uid://pviklv1mnd1d"]
 
+[ext_resource type="Script" path="res://inside_levels_h/item_scene.gd" id="1_ktrnl"]
 [ext_resource type="Texture2D" uid="uid://c1i1i7anmydho" path="res://assets/sprites/inside_levels/inside_layout_h_4.png" id="1_sut4c"]
+[ext_resource type="PackedScene" uid="uid://b0hg5omoq654a" path="res://item.tscn" id="2_pvr04"]
+[ext_resource type="PackedScene" uid="uid://5pmdmj5q2obg" path="res://enemy.tscn" id="4_qu8q0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vsg70"]
 size = Vector2(28, 288)
@@ -15,12 +18,14 @@ size = Vector2(260, 48)
 size = Vector2(132, 244)
 
 [node name="inside_level_h_4" type="Node2D"]
+script = ExtResource("1_ktrnl")
 
 [node name="InsideLayoutH4" type="Sprite2D" parent="."]
 position = Vector2(576, 324)
 texture = ExtResource("1_sut4c")
 
 [node name="Area2D" type="StaticBody2D" parent="."]
+visible = false
 collision_layer = 4
 collision_mask = 3
 
@@ -71,3 +76,24 @@ shape = SubResource("RectangleShape2D_rkc7x")
 [node name="CollisionShape2D12" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(576, 510)
 shape = SubResource("RectangleShape2D_rkc7x")
+
+[node name="item" parent="." instance=ExtResource("2_pvr04")]
+position = Vector2(160, 581)
+scale = Vector2(0.5, 0.5)
+
+[node name="enemy" parent="." instance=ExtResource("4_qu8q0")]
+position = Vector2(431, 222)
+scale = Vector2(0.7, 0.7)
+
+[node name="enemy2" parent="." instance=ExtResource("4_qu8q0")]
+position = Vector2(747, 568)
+scale = Vector2(0.7, 0.7)
+
+[node name="enemy3" parent="." instance=ExtResource("4_qu8q0")]
+position = Vector2(963, 73)
+scale = Vector2(0.7, 0.7)
+
+[connection signal="body_entered" from="item" to="." method="_on_item_body_entered"]
+[connection signal="hit" from="enemy" to="." method="_on_enemy_hit"]
+[connection signal="hit" from="enemy2" to="." method="_on_enemy_hit"]
+[connection signal="hit" from="enemy3" to="." method="_on_enemy_hit"]
