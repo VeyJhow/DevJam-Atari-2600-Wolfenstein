@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://d032sbti5oen"]
+
+[ext_resource type="Script" path="res://audio/volume_control.gd" id="1_ujir5"]
+
+[node name="volume_control" type="HSlider"]
+offset_right = 8.0
+offset_bottom = 16.0
+max_value = 1.0
+step = 0.001
+script = ExtResource("1_ujir5")

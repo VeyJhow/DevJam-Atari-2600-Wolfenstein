@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cyjj6jrvfrb5q"]
+[gd_scene load_steps=3 format=3 uid="uid://cyjj6jrvfrb5q"]
 
 [ext_resource type="Script" path="res://scripts/menu_scripts/options_menu.gd" id="1_5g6ox"]
+[ext_resource type="PackedScene" uid="uid://d032sbti5oen" path="res://audio/volume_control.tscn" id="2_elwou"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -19,10 +20,16 @@ offset_bottom = 40.0
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="Volume" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="master_label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+text = "VOLUME PRINCIPAL"
+
+[node name="master" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_elwou")]
+layout_mode = 2
+bus_name = "Master"
 
 [node name="Voltar" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+text = "VOLTAR"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Voltar" to="." method="_on_voltar_pressed"]
