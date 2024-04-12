@@ -74,9 +74,9 @@ func _ready():
 	horizontal_level_2.position = Vector2(1200,2244)
 
 func _process(_delta):
+	print(player.health)
 	if player.health == 0:
 		game_over()
-		print(player.health)
 
 func game_over():
 	player.running = false

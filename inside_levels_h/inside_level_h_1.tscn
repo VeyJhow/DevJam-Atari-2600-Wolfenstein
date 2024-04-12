@@ -1,10 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://bn4yfs5ahnq1j"]
+[gd_scene load_steps=10 format=3 uid="uid://bn4yfs5ahnq1j"]
 
 [ext_resource type="Script" path="res://inside_levels_h/item_scene.gd" id="1_n5r2t"]
 [ext_resource type="Texture2D" uid="uid://yspyq7ir1x6m" path="res://assets/sprites/inside_levels/inside_layout_h_1.png" id="1_tnh8h"]
 [ext_resource type="PackedScene" uid="uid://b0hg5omoq654a" path="res://item.tscn" id="2_ro7v3"]
 [ext_resource type="PackedScene" uid="uid://5pmdmj5q2obg" path="res://enemy.tscn" id="4_o8oax"]
-[ext_resource type="PackedScene" uid="uid://hevwhxrskx2v" path="res://player_grey.tscn" id="5_fwha3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7d87r"]
 size = Vector2(320, 256)
@@ -76,9 +75,6 @@ shape = SubResource("RectangleShape2D_s5dit")
 [node name="item" parent="." instance=ExtResource("2_ro7v3")]
 position = Vector2(493, 128)
 scale = Vector2(0.5, 0.5)
-
-[node name="player_grey" parent="." instance=ExtResource("5_fwha3")]
-position = Vector2(914, 107)
 
 [node name="enemy" parent="." instance=ExtResource("4_o8oax")]
 position = Vector2(489, 555)

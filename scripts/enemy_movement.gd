@@ -3,7 +3,7 @@ extends CharacterBody2D
 signal hit
 
 var speed = 150
-var player
+var track_position
 var player_position
 var self_position
 var chase = false
@@ -11,14 +11,13 @@ var direction
 @onready var search_area = $search_area
 
 func _ready():
-	player = get_parent().find_child("res://player_grey.tscn")
-	player_position = Vector2(player.global_position)
+	player_position = track_position
 	self_position = Vector2(self.global_position) 
 	search_area.body_entered.connect(_on_SearchArea_entered)
 	search_area.body_exited.connect(_on_SearchArea_exited)
 
 func _process(_delta):
-	player_position = Vector2(player.global_position)
+	player_position = track_position
 	self_position = Vector2(self.global_position)
 	if(chase == true):
 		direction = self_position.direction_to(player_position) 
