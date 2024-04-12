@@ -13,9 +13,9 @@ func _ready():
 	player = get_parent().find_child("player_grey")
 
 func _process(_delta):
-	enemy.track_position = player.position
-	enemy2.track_position = player.position
-	enemy3.track_position = player.position
+	enemy.track_position =  player.position
+	enemy2.track_position =  player.position
+	enemy3.track_position =  player.position
 
 func _on_item_body_entered(body):
 	if body is player_grey:

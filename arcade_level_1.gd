@@ -1,5 +1,6 @@
 extends Node2D
 
+var score_points : int = 0
 @onready var player = $player_grey
 @onready var camera = $Camera2D
 @onready var timer = $invulnerability_timer
@@ -10,6 +11,9 @@ extends Node2D
 @onready var patrol_bot4 = $patrol_bot4
 @onready var patrol_bot5 = $patrol_bot5
 @onready var patrol_bot6 = $patrol_bot6
+@onready var label = $Camera2D/player_status/Label
+@onready var label2 = $Camera2D/player_status/Label2
+@onready var game_over_window = $Camera2D/game_over_arcade
 var vertical_point_levels : Array = [preload("res://inside_levels_v/inside_level_v_1.tscn"),
 preload("res://inside_levels_v/inside_level_v_2.tscn"),
 preload("res://inside_levels_v/inside_level_v_3.tscn"),
@@ -52,6 +56,9 @@ var random_level : Array = ["res://level_1.tscn",
 "res://level_8.tscn"]
 
 func _ready():
+	score_points = PointsManager.score
+	player.ammo = PointsManager.ammo
+	player.health = PointsManager.health
 	var vertical_level_1 = vertical_point_levels.pick_random().instantiate()
 	var vertical_level_2 = vertical_health_levels.pick_random().instantiate()
 	var horizontal_level_1 = horizontal_ammo_levels.pick_random().instantiate()
@@ -74,7 +81,8 @@ func _ready():
 	horizontal_level_2.position = Vector2(1200,2244)
 
 func _process(_delta):
-	print(player.health)
+	label.text = str(player.ammo)
+	label2.text = str(player.health)
 	if player.health == 0:
 		game_over()
 
@@ -86,6 +94,7 @@ func game_over():
 	patrol_bot4.running = false
 	patrol_bot5.running = false
 	patrol_bot6.running = false
+	game_over_window.show()
 
 func _on_patrol_bot_hit():
 	player_hurt()
@@ -103,107 +112,110 @@ func _on_invulnerability_timer_timeout():
 func _on_enter_vertical_1_body_entered(body):
 	if body is player_grey:
 		player.position = Vector2(1776,623)
-		camera.position = Vector2(1776,324)
+		camera.position = Vector2(1842,324)
 
 func _on_enter_vertical_2_body_entered(body):
 	if body is player_grey:
 		player.position = Vector2(1776,25)
-		camera.position = Vector2(1776,324)
+		camera.position = Vector2(1842,324)
 
 func _on_return_area_1_body_entered(body):
 	if body is player_grey:
 		player.position = Vector2(272,144)
-		camera.position = Vector2(576,324)
+		camera.position = Vector2(642,324)
 		player_invulnerability()
 		check_player_points()
 
 func _on_return_area_2_body_entered(body):
 	if body is player_grey:
 		player.position = Vector2(272,87)
-		camera.position = Vector2(576,324)
+		camera.position = Vector2(642,324)
 		player_invulnerability()
 		check_player_points()
 
 func _on_enter_vertical_3_body_entered(body):
 	if body is player_grey:
 		player.position = Vector2(1776,1371)
-		camera.position = Vector2(1776,1072)
+		camera.position = Vector2(1842,1072)
 
 func _on_enter_vertical_4_body_entered(body):
 	if body is player_grey:
 		player.position = Vector2(1776,773)
-		camera.position = Vector2(1776,1072)
+		camera.position = Vector2(1842,1072)
 
 func _on_return_area_3_body_entered(body):
 	if body is player_grey:
 		player.position = Vector2(882,145)
-		camera.position = Vector2(576,324)
+		camera.position = Vector2(642,324)
 		player_invulnerability()
 		check_player_points()
 
 func _on_return_area_4_body_entered(body):
 	if body is player_grey:
 		player.position = Vector2(882,86)
-		camera.position = Vector2(576,324)
+		camera.position = Vector2(642,324)
 		player_invulnerability()
 		check_player_points()
 
 func _on_enter_vertical_5_body_entered(body):
 	if body is player_grey:
 		player.position = Vector2(1303,1820)
-		camera.position = Vector2(1776,1820)
+		camera.position = Vector2(1842,1820)
 
 func _on_enter_vertical_6_body_entered(body):
 	if body is player_grey:
 		player.position = Vector2(2249,1820)
-		camera.position = Vector2(1776,1820)
+		camera.position = Vector2(1842,1820)
 
 func _on_return_area_5_body_entered(body):
 	if body is player_grey:
 		player.position = Vector2(191,530)
-		camera.position = Vector2(576,324)
+		camera.position = Vector2(642,324)
 		player_invulnerability()
 		check_player_points()
 
 func _on_return_area_6_body_entered(body):
 	if body is player_grey:
 		player.position = Vector2(355,530)
-		camera.position = Vector2(576,324)
+		camera.position = Vector2(642,324)
 		player_invulnerability()
 		check_player_points()
 
 func _on_enter_vertical_7_body_entered(body):
 	if body is player_grey:
 		player.position = Vector2(1303,2568)
-		camera.position = Vector2(1776,2568)
+		camera.position = Vector2(1842,2568)
 
 func _on_enter_vertical_8_body_entered(body):
 	if body is player_grey:
 		player.position = Vector2(2249,2568)
-		camera.position = Vector2(1776,2568)
+		camera.position = Vector2(1842,2568)
 
 func _on_return_area_7_body_entered(body):
 	if body is player_grey:
 		player.position = Vector2(804,530)
-		camera.position = Vector2(576,324)
+		camera.position = Vector2(642,324)
 		player_invulnerability()
 		check_player_points()
 
 func _on_return_area_8_body_entered(body):
 	if body is player_grey:
 		player.position = Vector2(962,530)
-		camera.position = Vector2(576,324)
+		camera.position = Vector2(642,324)
 		player_invulnerability()
 		check_player_points()
 
 func add_points_to_player():
 	player.points += 1
+	score_points += 100
 
 func add_health_to_player():
 	player.health += 1
+	score_points += 50
 
 func add_ammo_to_player():
 	player.ammo += 4
+	score_points += 50
 
 func check_player_points():
 	if player.points == 2:
@@ -217,4 +229,8 @@ func check_player_points():
 		timer2.start()
 
 func _on_end_level_timeout():
+	PointsManager.score = score_points
+	PointsManager.ammo = player.ammo
+	PointsManager.health = player.health
+	PointsManager.save_score()
 	get_tree().change_scene_to_file(random_level.pick_random())

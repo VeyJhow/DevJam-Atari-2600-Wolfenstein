@@ -1,9 +1,12 @@
-[gd_scene load_steps=48 format=3 uid="uid://ckgqwyo7wsam4"]
+[gd_scene load_steps=52 format=3 uid="uid://ckgqwyo7wsam4"]
 
 [ext_resource type="Texture2D" uid="uid://bd2onni24ulec" path="res://assets/sprites/levels/level_2_layout.png" id="1_pvby8"]
 [ext_resource type="Script" path="res://arcade_level_2.gd" id="1_sm4h6"]
 [ext_resource type="PackedScene" uid="uid://hevwhxrskx2v" path="res://player_grey.tscn" id="2_n1mje"]
 [ext_resource type="PackedScene" uid="uid://bw3itbfrtmhs7" path="res://patrol_bot.tscn" id="3_xheln"]
+[ext_resource type="Texture2D" uid="uid://dnwb2o8ivmpyn" path="res://assets/sprites/status.png" id="5_mlpfa"]
+[ext_resource type="PackedScene" uid="uid://bmkbwswk2aged" path="res://game_over_arcade.tscn" id="5_ohjni"]
+[ext_resource type="FontFile" uid="uid://byxfi3b16obej" path="res://assets/fonts/Pixellettersfull-BnJ5.ttf" id="6_gmnoe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nv4xh"]
 size = Vector2(28, 640)
@@ -85,6 +88,10 @@ size = Vector2(12, 36)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pyrai"]
 size = Vector2(44, 12)
+
+[sub_resource type="LabelSettings" id="LabelSettings_xcrml"]
+font = ExtResource("6_gmnoe")
+font_size = 1191
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2dkc"]
 size = Vector2(164, 20)
@@ -347,7 +354,33 @@ position = Vector2(704, 458)
 shape = SubResource("RectangleShape2D_pyrai")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(576, 324)
+position = Vector2(642, 324)
+
+[node name="player_status" type="Sprite2D" parent="Camera2D"]
+position = Vector2(510, 0)
+texture = ExtResource("5_mlpfa")
+
+[node name="Label" type="Label" parent="Camera2D/player_status"]
+offset_left = -10.0
+offset_top = -124.0
+offset_right = 511.0
+offset_bottom = 894.0
+scale = Vector2(0.05, 0.05)
+label_settings = SubResource("LabelSettings_xcrml")
+
+[node name="Label2" type="Label" parent="Camera2D/player_status"]
+offset_left = -10.0
+offset_top = 132.0
+offset_right = 511.0
+offset_bottom = 1150.0
+scale = Vector2(0.05, 0.05)
+label_settings = SubResource("LabelSettings_xcrml")
+
+[node name="game_over_arcade" parent="Camera2D" instance=ExtResource("5_ohjni")]
+visible = false
+z_index = 2
+z_as_relative = false
+position = Vector2(-66, 0)
 
 [node name="invulnerability_timer" type="Timer" parent="."]
 one_shot = true
