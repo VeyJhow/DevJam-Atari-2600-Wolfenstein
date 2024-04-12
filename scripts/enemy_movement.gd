@@ -19,7 +19,6 @@ func _ready():
 	
 	#$search_area.connect("area_exited", self, "_on_SearchArea_exited")
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	player_position = Vector2(player.global_position)
