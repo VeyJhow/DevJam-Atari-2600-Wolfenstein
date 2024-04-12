@@ -1,0 +1,93 @@
+[gd_scene load_steps=10 format=3 uid="uid://dc420rycr3ibr"]
+
+[ext_resource type="Script" path="res://inside_levels_h/ammo_scene.gd" id="1_nljos"]
+[ext_resource type="Texture2D" uid="uid://du3k5rvoupp6v" path="res://assets/sprites/inside_layout_v_11.png" id="2_4a188"]
+[ext_resource type="PackedScene" uid="uid://y32enlyrm2c5" path="res://ammo.tscn" id="3_q4p34"]
+[ext_resource type="PackedScene" uid="uid://5pmdmj5q2obg" path="res://enemy.tscn" id="4_0qtmo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_66m6e"]
+size = Vector2(476, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uq37k"]
+size = Vector2(28, 616)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s86hu"]
+size = Vector2(108, 452)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hkxxm"]
+size = Vector2(64, 452)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y70p0"]
+size = Vector2(452, 64)
+
+[node name="inside_level_v_11" type="Node2D"]
+script = ExtResource("1_nljos")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+texture = ExtResource("2_4a188")
+
+[node name="walls" type="StaticBody2D" parent="."]
+visible = false
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="walls"]
+position = Vector2(304, 10)
+shape = SubResource("RectangleShape2D_66m6e")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="walls"]
+position = Vector2(848, 10)
+shape = SubResource("RectangleShape2D_66m6e")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="walls"]
+position = Vector2(304, 638)
+shape = SubResource("RectangleShape2D_66m6e")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="walls"]
+position = Vector2(848, 638)
+shape = SubResource("RectangleShape2D_66m6e")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="walls"]
+position = Vector2(80, 324)
+shape = SubResource("RectangleShape2D_uq37k")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="walls"]
+position = Vector2(1072, 324)
+shape = SubResource("RectangleShape2D_uq37k")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="walls"]
+position = Vector2(148, 406)
+shape = SubResource("RectangleShape2D_s86hu")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="walls"]
+position = Vector2(866, 406)
+shape = SubResource("RectangleShape2D_hkxxm")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="walls"]
+position = Vector2(608, 212)
+shape = SubResource("RectangleShape2D_y70p0")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="walls"]
+position = Vector2(608, 400)
+shape = SubResource("RectangleShape2D_y70p0")
+
+[node name="ammo" parent="." instance=ExtResource("3_q4p34")]
+position = Vector2(721, 313)
+scale = Vector2(0.5, 0.5)
+
+[node name="enemy" parent="." instance=ExtResource("4_0qtmo")]
+position = Vector2(254, 97)
+scale = Vector2(0.7, 0.7)
+
+[node name="enemy2" parent="." instance=ExtResource("4_0qtmo")]
+position = Vector2(292, 565)
+scale = Vector2(0.7, 0.7)
+
+[node name="enemy3" parent="." instance=ExtResource("4_0qtmo")]
+position = Vector2(959, 124)
+scale = Vector2(0.7, 0.7)
+
+[connection signal="body_entered" from="ammo" to="." method="_on_ammo_body_entered"]
+[connection signal="hit" from="enemy" to="." method="_on_enemy_hit"]
+[connection signal="hit" from="enemy2" to="." method="_on_enemy_hit"]
+[connection signal="hit" from="enemy3" to="." method="_on_enemy_hit"]

@@ -1,9 +1,12 @@
-[gd_scene load_steps=21 format=3 uid="uid://dutft8m1yx81n"]
+[gd_scene load_steps=30 format=3 uid="uid://dutft8m1yx81n"]
 
 [ext_resource type="Texture2D" uid="uid://dpbf5gm45vquw" path="res://assets/sprites/level_1_layout.png" id="1_fggjl"]
-[ext_resource type="Script" path="res://test_1.gd" id="1_xqf8f"]
+[ext_resource type="Script" path="res://arcade_level_1.gd" id="1_xqf8f"]
+[ext_resource type="Texture2D" uid="uid://dnwb2o8ivmpyn" path="res://assets/sprites/status.png" id="2_380yy"]
 [ext_resource type="PackedScene" uid="uid://hevwhxrskx2v" path="res://player_grey.tscn" id="2_rqmc1"]
+[ext_resource type="FontFile" uid="uid://byxfi3b16obej" path="res://assets/fonts/Pixellettersfull-BnJ5.ttf" id="3_1gwb3"]
 [ext_resource type="PackedScene" uid="uid://bw3itbfrtmhs7" path="res://patrol_bot.tscn" id="4_agxbo"]
+[ext_resource type="PackedScene" uid="uid://bmkbwswk2aged" path="res://game_over_arcade.tscn" id="7_s2jmr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_grcpx"]
 size = Vector2(28, 640)
@@ -52,6 +55,25 @@ size = Vector2(312, 12)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d5e5i"]
 size = Vector2(28, 16)
+
+[sub_resource type="LabelSettings" id="LabelSettings_m41qy"]
+font = ExtResource("3_1gwb3")
+font_size = 1191
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gl65a"]
+size = Vector2(164, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rtwlk"]
+size = Vector2(34, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kxlhh"]
+size = Vector2(23, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n2v0k"]
+size = Vector2(68, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iwo0d"]
+size = Vector2(20, 64)
 
 [node name="level_1" type="Node2D"]
 script = ExtResource("1_xqf8f")
@@ -265,49 +287,197 @@ shape = SubResource("RectangleShape2D_d5e5i")
 position = Vector2(178, 552)
 shape = SubResource("RectangleShape2D_d5e5i")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(642, 324)
+
+[node name="player_status" type="Sprite2D" parent="Camera2D"]
+position = Vector2(510, 0)
+texture = ExtResource("2_380yy")
+
+[node name="Label" type="Label" parent="Camera2D/player_status"]
+offset_left = -10.0
+offset_top = -124.0
+offset_right = 511.0
+offset_bottom = 894.0
+scale = Vector2(0.05, 0.05)
+label_settings = SubResource("LabelSettings_m41qy")
+
+[node name="Label2" type="Label" parent="Camera2D/player_status"]
+offset_left = -10.0
+offset_top = 132.0
+offset_right = 511.0
+offset_bottom = 1150.0
+scale = Vector2(0.05, 0.05)
+label_settings = SubResource("LabelSettings_m41qy")
+
+[node name="game_over_arcade" parent="Camera2D" instance=ExtResource("7_s2jmr")]
+visible = false
+z_index = 2
+z_as_relative = false
+position = Vector2(-66, 0)
+
+[node name="invulnerability_timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="end_level" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
 [node name="player_grey" parent="." instance=ExtResource("2_rqmc1")]
 position = Vector2(576, 324)
-collision_mask = 12
 
 [node name="patrol_bot" parent="." instance=ExtResource("4_agxbo")]
 position = Vector2(128, 165)
 scale = Vector2(2, 2)
-collision_layer = 2
-collision_mask = 6
 
 [node name="patrol_bot2" parent="." instance=ExtResource("4_agxbo")]
 position = Vector2(656, 260)
 scale = Vector2(2, 2)
-collision_layer = 2
-collision_mask = 6
 
 [node name="patrol_bot3" parent="." instance=ExtResource("4_agxbo")]
 position = Vector2(743, 602)
 scale = Vector2(2, 2)
-collision_layer = 2
-collision_mask = 6
 
 [node name="patrol_bot4" parent="." instance=ExtResource("4_agxbo")]
 position = Vector2(1023, 190)
 scale = Vector2(2, 2)
-collision_layer = 2
-collision_mask = 6
 
 [node name="patrol_bot5" parent="." instance=ExtResource("4_agxbo")]
 position = Vector2(320, 460)
 scale = Vector2(2, 2)
-collision_layer = 2
-collision_mask = 6
 
 [node name="patrol_bot6" parent="." instance=ExtResource("4_agxbo")]
 position = Vector2(1023, 386)
 scale = Vector2(2, 2)
-collision_layer = 2
-collision_mask = 6
 
+[node name="enter_vertical_1" type="Area2D" parent="."]
+position = Vector2(272, 128)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enter_vertical_1"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_gl65a")
+
+[node name="enter_vertical_2" type="Area2D" parent="."]
+position = Vector2(272, 97)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enter_vertical_2"]
+position = Vector2(0, 5.5)
+shape = SubResource("RectangleShape2D_gl65a")
+
+[node name="enter_vertical_3" type="Area2D" parent="."]
+position = Vector2(882, 128)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enter_vertical_3"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_gl65a")
+
+[node name="enter_vertical_4" type="Area2D" parent="."]
+position = Vector2(882, 104)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enter_vertical_4"]
+shape = SubResource("RectangleShape2D_gl65a")
+
+[node name="enter_vertical_5" type="Area2D" parent="."]
+position = Vector2(223, 530)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enter_vertical_5"]
+position = Vector2(-7, 0)
+shape = SubResource("RectangleShape2D_rtwlk")
+
+[node name="enter_vertical_6" type="Area2D" parent="."]
+position = Vector2(335, 530)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enter_vertical_6"]
+position = Vector2(-7, 0)
+shape = SubResource("RectangleShape2D_rtwlk")
+
+[node name="enter_vertical_7" type="Area2D" parent="."]
+position = Vector2(823, 530)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enter_vertical_7"]
+position = Vector2(-1.5, 0)
+shape = SubResource("RectangleShape2D_kxlhh")
+
+[node name="enter_vertical_8" type="Area2D" parent="."]
+position = Vector2(945, 530)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enter_vertical_8"]
+position = Vector2(-1.5, 0)
+shape = SubResource("RectangleShape2D_kxlhh")
+
+[node name="return_area_1" type="Area2D" parent="."]
+position = Vector2(1776, 638)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="return_area_1"]
+shape = SubResource("RectangleShape2D_n2v0k")
+
+[node name="return_area_2" type="Area2D" parent="."]
+position = Vector2(1776, 10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="return_area_2"]
+shape = SubResource("RectangleShape2D_n2v0k")
+
+[node name="return_area_3" type="Area2D" parent="."]
+position = Vector2(1776, 1386)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="return_area_3"]
+shape = SubResource("RectangleShape2D_n2v0k")
+
+[node name="return_area_4" type="Area2D" parent="."]
+position = Vector2(1776, 758)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="return_area_4"]
+shape = SubResource("RectangleShape2D_n2v0k")
+
+[node name="return_area_5" type="Area2D" parent="."]
+position = Vector2(1280, 1821)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="return_area_5"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_iwo0d")
+
+[node name="return_area_6" type="Area2D" parent="."]
+position = Vector2(2272, 1821)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="return_area_6"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_iwo0d")
+
+[node name="return_area_7" type="Area2D" parent="."]
+position = Vector2(1280, 2569)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="return_area_7"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_iwo0d")
+
+[node name="return_area_8" type="Area2D" parent="."]
+position = Vector2(2272, 2569)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="return_area_8"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_iwo0d")
+
+[connection signal="timeout" from="invulnerability_timer" to="." method="_on_invulnerability_timer_timeout"]
+[connection signal="timeout" from="end_level" to="." method="_on_end_level_timeout"]
 [connection signal="hit" from="patrol_bot" to="." method="_on_patrol_bot_hit"]
 [connection signal="hit" from="patrol_bot2" to="." method="_on_patrol_bot_hit"]
 [connection signal="hit" from="patrol_bot3" to="." method="_on_patrol_bot_hit"]
 [connection signal="hit" from="patrol_bot4" to="." method="_on_patrol_bot_hit"]
 [connection signal="hit" from="patrol_bot5" to="." method="_on_patrol_bot_hit"]
 [connection signal="hit" from="patrol_bot6" to="." method="_on_patrol_bot_hit"]
+[connection signal="body_entered" from="enter_vertical_1" to="." method="_on_enter_vertical_1_body_entered"]
+[connection signal="body_entered" from="enter_vertical_2" to="." method="_on_enter_vertical_2_body_entered"]
+[connection signal="body_entered" from="enter_vertical_3" to="." method="_on_enter_vertical_3_body_entered"]
+[connection signal="body_entered" from="enter_vertical_4" to="." method="_on_enter_vertical_4_body_entered"]
+[connection signal="body_entered" from="enter_vertical_5" to="." method="_on_enter_vertical_5_body_entered"]
+[connection signal="body_entered" from="enter_vertical_6" to="." method="_on_enter_vertical_6_body_entered"]
+[connection signal="body_entered" from="enter_vertical_7" to="." method="_on_enter_vertical_7_body_entered"]
+[connection signal="body_entered" from="enter_vertical_8" to="." method="_on_enter_vertical_8_body_entered"]
+[connection signal="body_entered" from="return_area_1" to="." method="_on_return_area_1_body_entered"]
+[connection signal="body_entered" from="return_area_2" to="." method="_on_return_area_2_body_entered"]
+[connection signal="body_entered" from="return_area_3" to="." method="_on_return_area_3_body_entered"]
+[connection signal="body_entered" from="return_area_4" to="." method="_on_return_area_4_body_entered"]
+[connection signal="body_entered" from="return_area_5" to="." method="_on_return_area_5_body_entered"]
+[connection signal="body_entered" from="return_area_6" to="." method="_on_return_area_6_body_entered"]
+[connection signal="body_entered" from="return_area_7" to="." method="_on_return_area_7_body_entered"]
+[connection signal="body_entered" from="return_area_8" to="." method="_on_return_area_8_body_entered"]

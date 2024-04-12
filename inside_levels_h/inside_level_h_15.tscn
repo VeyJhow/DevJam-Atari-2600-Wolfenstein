@@ -1,54 +1,85 @@
-[gd_scene load_steps=5 format=3 uid="uid://c7ggmll5nkay3"]
+[gd_scene load_steps=10 format=3 uid="uid://02dobd4b2joe"]
 
-[ext_resource type="Texture2D" uid="uid://oswkin2n5b5m" path="res://assets/sprites/inside_levels/inside_layout_h_15.png" id="1_j2lr0"]
+[ext_resource type="Script" path="res://inside_levels_h/health_scene.gd" id="1_8s3yf"]
+[ext_resource type="Texture2D" uid="uid://b5h6602yx7egk" path="res://assets/sprites/inside_layout_h_15.png" id="1_vqkb8"]
+[ext_resource type="PackedScene" uid="uid://cmfscuuy27tuj" path="res://health.tscn" id="3_wtt6p"]
+[ext_resource type="PackedScene" uid="uid://5pmdmj5q2obg" path="res://enemy.tscn" id="4_1c0u2"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yjafv"]
-size = Vector2(1020, 12)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ts7fg"]
-size = Vector2(740, 44)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_thxtw"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qmw6g"]
 size = Vector2(28, 276)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rkhjh"]
+size = Vector2(1020, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v50hp"]
+size = Vector2(1020, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ehel2"]
+size = Vector2(28, 276)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w4aij"]
+size = Vector2(740, 44)
+
 [node name="inside_level_h_15" type="Node2D"]
+script = ExtResource("1_8s3yf")
 
-[node name="InsideLayoutH15" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(576, 324)
-texture = ExtResource("1_j2lr0")
+texture = ExtResource("1_vqkb8")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="walls" type="StaticBody2D" parent="."]
+visible = false
 collision_layer = 4
-collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(576, 10)
-shape = SubResource("RectangleShape2D_yjafv")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(576, 638)
-shape = SubResource("RectangleShape2D_yjafv")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(576, 474)
-shape = SubResource("RectangleShape2D_ts7fg")
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(576, 174)
-shape = SubResource("RectangleShape2D_ts7fg")
-
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="walls"]
 position = Vector2(80, 154)
-shape = SubResource("RectangleShape2D_thxtw")
+shape = SubResource("RectangleShape2D_qmw6g")
 
-[node name="CollisionShape2D6" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="walls"]
 position = Vector2(80, 494)
-shape = SubResource("RectangleShape2D_thxtw")
+shape = SubResource("RectangleShape2D_qmw6g")
 
-[node name="CollisionShape2D7" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="walls"]
+position = Vector2(576, 10)
+shape = SubResource("RectangleShape2D_rkhjh")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="walls"]
+position = Vector2(576, 638)
+shape = SubResource("RectangleShape2D_v50hp")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="walls"]
 position = Vector2(1072, 494)
-shape = SubResource("RectangleShape2D_thxtw")
+shape = SubResource("RectangleShape2D_ehel2")
 
-[node name="CollisionShape2D8" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="walls"]
 position = Vector2(1072, 154)
-shape = SubResource("RectangleShape2D_thxtw")
+shape = SubResource("RectangleShape2D_ehel2")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="walls"]
+position = Vector2(576, 174)
+shape = SubResource("RectangleShape2D_w4aij")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="walls"]
+position = Vector2(576, 474)
+shape = SubResource("RectangleShape2D_w4aij")
+
+[node name="health" parent="." instance=ExtResource("3_wtt6p")]
+position = Vector2(178, 72)
+scale = Vector2(0.5, 0.5)
+
+[node name="enemy" parent="." instance=ExtResource("4_1c0u2")]
+position = Vector2(518, 296)
+scale = Vector2(0.7, 0.7)
+
+[node name="enemy2" parent="." instance=ExtResource("4_1c0u2")]
+position = Vector2(176, 548)
+scale = Vector2(0.7, 0.7)
+
+[node name="enemy3" parent="." instance=ExtResource("4_1c0u2")]
+position = Vector2(950, 71)
+scale = Vector2(0.7, 0.7)
+
+[connection signal="body_entered" from="health" to="." method="_on_health_body_entered"]
+[connection signal="hit" from="enemy" to="." method="_on_enemy_hit"]
+[connection signal="hit" from="enemy2" to="." method="_on_enemy_hit"]
+[connection signal="hit" from="enemy3" to="." method="_on_enemy_hit"]

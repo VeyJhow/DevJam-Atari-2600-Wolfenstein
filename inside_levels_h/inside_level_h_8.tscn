@@ -1,6 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://d4kf5r4ei0pdx"]
+[gd_scene load_steps=11 format=3 uid="uid://d4kf5r4ei0pdx"]
 
 [ext_resource type="Texture2D" uid="uid://5ndv1cbalm4r" path="res://assets/sprites/inside_levels/inside_layout_h_8.png" id="1_ua1iw"]
+[ext_resource type="Script" path="res://inside_levels_h/item_scene.gd" id="1_xlu0m"]
+[ext_resource type="PackedScene" uid="uid://b0hg5omoq654a" path="res://item.tscn" id="2_wtbid"]
+[ext_resource type="PackedScene" uid="uid://5pmdmj5q2obg" path="res://enemy.tscn" id="4_cfoay"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4s4n"]
 size = Vector2(1020, 12)
@@ -21,12 +24,14 @@ size = Vector2(44, 108)
 size = Vector2(400, 44)
 
 [node name="inside_level_h_8" type="Node2D"]
+script = ExtResource("1_xlu0m")
 
 [node name="InsideLayoutH8" type="Sprite2D" parent="."]
 position = Vector2(576, 324)
 texture = ExtResource("1_ua1iw")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="StaticBody2D" parent="."]
+visible = false
 collision_layer = 4
 collision_mask = 3
 
@@ -69,3 +74,24 @@ shape = SubResource("RectangleShape2D_crudl")
 [node name="CollisionShape2D10" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(294, 198)
 shape = SubResource("RectangleShape2D_qrhmh")
+
+[node name="item" parent="." instance=ExtResource("2_wtbid")]
+position = Vector2(185, 96)
+scale = Vector2(0.5, 0.5)
+
+[node name="enemy" parent="." instance=ExtResource("4_cfoay")]
+position = Vector2(935, 552)
+scale = Vector2(0.7, 0.7)
+
+[node name="enemy2" parent="." instance=ExtResource("4_cfoay")]
+position = Vector2(692, 88)
+scale = Vector2(0.7, 0.7)
+
+[node name="enemy3" parent="." instance=ExtResource("4_cfoay")]
+position = Vector2(372, 575)
+scale = Vector2(0.7, 0.7)
+
+[connection signal="body_entered" from="item" to="." method="_on_item_body_entered"]
+[connection signal="hit" from="enemy" to="." method="_on_enemy_hit"]
+[connection signal="hit" from="enemy2" to="." method="_on_enemy_hit"]
+[connection signal="hit" from="enemy3" to="." method="_on_enemy_hit"]

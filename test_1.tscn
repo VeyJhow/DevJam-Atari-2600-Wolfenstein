@@ -1,6 +1,6 @@
 [gd_scene load_steps=30 format=3 uid="uid://cpeoylk7yb2j7"]
 
-[ext_resource type="Script" path="res://test_1.gd" id="1_nrorx"]
+[ext_resource type="Script" path="res://arcade_level_1.gd" id="1_nrorx"]
 [ext_resource type="Texture2D" uid="uid://c5wlaxbrxyq0i" path="res://assets/sprites/arcade_level_1.png" id="2_ug5oe"]
 [ext_resource type="PackedScene" uid="uid://hevwhxrskx2v" path="res://player_grey.tscn" id="3_wf17h"]
 [ext_resource type="PackedScene" uid="uid://bw3itbfrtmhs7" path="res://patrol_bot.tscn" id="4_m68eo"]
@@ -88,6 +88,7 @@ position = Vector2(576, 324)
 texture = ExtResource("2_ug5oe")
 
 [node name="walls" type="StaticBody2D" parent="."]
+visible = false
 collision_layer = 4
 collision_mask = 3
 
@@ -285,43 +286,35 @@ shape = SubResource("RectangleShape2D_taryv")
 
 [node name="player_grey" parent="." instance=ExtResource("3_wf17h")]
 position = Vector2(576, 324)
-collision_mask = 12
 
 [node name="patrol_bot" parent="." instance=ExtResource("4_m68eo")]
 position = Vector2(132, 264)
 scale = Vector2(1.9, 1.9)
-collision_layer = 2
-collision_mask = 6
 
 [node name="patrol_bot2" parent="." instance=ExtResource("4_m68eo")]
 position = Vector2(835, 453)
 scale = Vector2(1.9, 1.9)
 collision_layer = 3
-collision_mask = 6
 
 [node name="patrol_bot3" parent="." instance=ExtResource("4_m68eo")]
 position = Vector2(321, 198)
 scale = Vector2(1.9, 1.9)
 collision_layer = 3
-collision_mask = 6
 
 [node name="patrol_bot4" parent="." instance=ExtResource("4_m68eo")]
 position = Vector2(1022, 161)
 scale = Vector2(1.9, 1.9)
 collision_layer = 3
-collision_mask = 6
 
 [node name="patrol_bot5" parent="." instance=ExtResource("4_m68eo")]
 position = Vector2(1021, 385)
 scale = Vector2(1.9, 1.9)
 collision_layer = 3
-collision_mask = 6
 
 [node name="patrol_bot6" parent="." instance=ExtResource("4_m68eo")]
 position = Vector2(359, 598)
 scale = Vector2(1.9, 1.9)
 collision_layer = 3
-collision_mask = 6
 
 [connection signal="hit" from="patrol_bot" to="." method="_on_patrol_bot_hit"]
 [connection signal="hit" from="patrol_bot2" to="." method="_on_patrol_bot_hit"]
