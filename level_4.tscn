@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://bl6femyvtoyk5"]
+[gd_scene load_steps=41 format=3 uid="uid://bl6femyvtoyk5"]
 
 [ext_resource type="Script" path="res://arcade_level_4.gd" id="1_tfsfx"]
 [ext_resource type="Texture2D" uid="uid://dxv8p3qrgm2xf" path="res://assets/sprites/levels/level_4_layout.png" id="1_x7ufp"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dnwb2o8ivmpyn" path="res://assets/sprites/status.png" id="5_h5ytt"]
 [ext_resource type="PackedScene" uid="uid://bmkbwswk2aged" path="res://game_over_arcade.tscn" id="5_w4lfk"]
 [ext_resource type="FontFile" uid="uid://byxfi3b16obej" path="res://assets/fonts/Pixellettersfull-BnJ5.ttf" id="6_xn62y"]
+[ext_resource type="TileSet" uid="uid://ctvsdwcqmsikv" path="res://assets/sprites/tileset/tileset_uber.tres" id="8_ucqmd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mq453"]
 size = Vector2(28, 640)
@@ -324,28 +325,28 @@ position = Vector2(576, 324)
 
 [node name="patrol_bot" parent="." instance=ExtResource("3_88jrq")]
 position = Vector2(142, 262)
-scale = Vector2(1.9, 1.9)
+scale = Vector2(1, 1)
 
 [node name="patrol_bot2" parent="." instance=ExtResource("3_88jrq")]
 position = Vector2(1010, 262)
-scale = Vector2(1.9, 1.9)
+scale = Vector2(1, 1)
 
 [node name="patrol_bot3" parent="." instance=ExtResource("3_88jrq")]
 position = Vector2(142, 604)
-scale = Vector2(1.9, 1.9)
+scale = Vector2(1, 1)
 collision_layer = 3
 
 [node name="patrol_bot4" parent="." instance=ExtResource("3_88jrq")]
 position = Vector2(1010, 604)
-scale = Vector2(1.9, 1.9)
+scale = Vector2(1, 1)
 
 [node name="patrol_bot5" parent="." instance=ExtResource("3_88jrq")]
 position = Vector2(222, 188)
-scale = Vector2(1.9, 1.9)
+scale = Vector2(1, 1)
 
 [node name="patrol_bot6" parent="." instance=ExtResource("3_88jrq")]
 position = Vector2(930, 330)
-scale = Vector2(1.9, 1.9)
+scale = Vector2(1, 1)
 
 [node name="enter_vertical_1" type="Area2D" parent="."]
 position = Vector2(272, 130)
@@ -453,6 +454,12 @@ position = Vector2(2272, 2569)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="return_area_8"]
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_j7q4j")
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2(2, 4)
+tile_set = ExtResource("8_ucqmd")
+format = 2
+layer_0/tile_data = PackedInt32Array(2, 1, 0, 65538, 1, 0, 131074, 1, 0, 196610, 1, 0, 262146, 1, 0, 327682, 1, 0, 393218, 1, 0, 458754, 1, 0, 524290, 1, 0, 589826, 1, 0, 655362, 1, 0, 720898, 1, 0, 786434, 1, 0, 851970, 1, 0, 917506, 1, 0, 983042, 1, 0, 1048578, 1, 0, 1114114, 1, 0, 1179650, 1, 0, 1245186, 1, 0, 1310722, 1, 0, 1310723, 1, 0, 1310724, 1, 0, 1310725, 1, 0, 1310726, 1, 0, 1310727, 1, 0, 1310728, 1, 0, 1310729, 1, 0, 1310730, 1, 0, 1310731, 1, 0, 1310732, 1, 0, 1310733, 1, 0, 1310734, 1, 0, 1310735, 1, 0, 1310736, 1, 0, 1310737, 1, 0, 1310738, 1, 0, 1310739, 1, 0, 1310740, 1, 0, 1310741, 1, 0, 1310742, 1, 0, 1310743, 1, 0, 1310744, 1, 0, 1310745, 1, 0, 1310746, 1, 0, 1310747, 1, 0, 1310748, 1, 0, 1310749, 1, 0, 1310750, 1, 0, 1310751, 1, 0, 1310752, 1, 0, 1310753, 1, 0, 33, 1, 0, 65569, 1, 0, 131105, 1, 0, 196641, 1, 0, 262177, 1, 0, 327713, 1, 0, 393249, 1, 0, 458785, 1, 0, 524321, 1, 0, 589857, 1, 0, 655393, 1, 0, 720929, 1, 0, 786465, 1, 0, 852001, 1, 0, 917537, 1, 0, 983073, 1, 0, 1048609, 1, 0, 1114145, 1, 0, 1179681, 1, 0, 1245217, 1, 0, -65534, 1, 0, -65533, 1, 0, -65532, 1, 0, -65531, 1, 0, -65530, 1, 0, -65529, 1, 0, -65528, 1, 0, -65527, 1, 0, -65526, 1, 0, -65525, 1, 0, -65524, 1, 0, -65523, 1, 0, -65522, 1, 0, -65521, 1, 0, -65520, 1, 0, -65519, 1, 0, -65518, 1, 0, -65517, 1, 0, -65516, 1, 0, -65515, 1, 0, -65514, 1, 0, -65513, 1, 0, -65512, 1, 0, -65511, 1, 0, -65510, 1, 0, -65509, 1, 0, -65508, 1, 0, -65507, 1, 0, -65506, 1, 0, -65505, 1, 0, -65504, 1, 0, -65503, 1, 0, 131077, 1, 0, 196613, 1, 0, 262149, 1, 0, 327685, 1, 0, 393221, 1, 0)
 
 [connection signal="timeout" from="invulnerability_timer" to="." method="_on_invulnerability_timer_timeout"]
 [connection signal="timeout" from="end_level" to="." method="_on_end_level_timeout"]
