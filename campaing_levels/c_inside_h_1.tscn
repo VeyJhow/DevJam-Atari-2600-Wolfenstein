@@ -1,0 +1,94 @@
+[gd_scene load_steps=10 format=3 uid="uid://b1g4xepa1qtho"]
+
+[ext_resource type="Script" path="res://inside_levels_h/item_scene.gd" id="1_dht8e"]
+[ext_resource type="Texture2D" uid="uid://yspyq7ir1x6m" path="res://assets/sprites/inside_levels/inside_layout_h_1.png" id="1_ebdcq"]
+[ext_resource type="PackedScene" uid="uid://b0hg5omoq654a" path="res://item.tscn" id="3_yg55p"]
+[ext_resource type="PackedScene" uid="uid://5pmdmj5q2obg" path="res://enemy.tscn" id="4_7qilg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x4l83"]
+size = Vector2(320, 256)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k4ncc"]
+size = Vector2(28, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qtn03"]
+size = Vector2(700, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rh5qs"]
+size = Vector2(64, 244)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ml5je"]
+size = Vector2(28, 276)
+
+[node name="c_inside_h_1" type="Node2D"]
+script = ExtResource("1_dht8e")
+
+[node name="iLvh1_background" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+texture = ExtResource("1_ebdcq")
+
+[node name="walls" type="StaticBody2D" parent="."]
+visible = false
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="walls"]
+position = Vector2(226, 132)
+shape = SubResource("RectangleShape2D_x4l83")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="walls"]
+position = Vector2(226, 516)
+shape = SubResource("RectangleShape2D_x4l83")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="walls"]
+position = Vector2(80, 372)
+shape = SubResource("RectangleShape2D_k4ncc")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="walls"]
+position = Vector2(80, 276)
+shape = SubResource("RectangleShape2D_k4ncc")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="walls"]
+position = Vector2(736, 10)
+shape = SubResource("RectangleShape2D_qtn03")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="walls"]
+position = Vector2(736, 638)
+shape = SubResource("RectangleShape2D_qtn03")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="walls"]
+position = Vector2(738, 510)
+shape = SubResource("RectangleShape2D_rh5qs")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="walls"]
+position = Vector2(738, 138)
+shape = SubResource("RectangleShape2D_rh5qs")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="walls"]
+position = Vector2(1072, 154)
+shape = SubResource("RectangleShape2D_ml5je")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="walls"]
+position = Vector2(1072, 494)
+shape = SubResource("RectangleShape2D_ml5je")
+
+[node name="item" parent="." instance=ExtResource("3_yg55p")]
+position = Vector2(493, 128)
+scale = Vector2(0.5, 0.5)
+
+[node name="enemy" parent="." instance=ExtResource("4_7qilg")]
+position = Vector2(489, 555)
+scale = Vector2(0.7, 0.7)
+
+[node name="enemy2" parent="." instance=ExtResource("4_7qilg")]
+position = Vector2(635, 71)
+scale = Vector2(0.7, 0.7)
+
+[node name="enemy3" parent="." instance=ExtResource("4_7qilg")]
+position = Vector2(957, 574)
+scale = Vector2(0.7, 0.7)
+
+[connection signal="body_entered" from="item" to="." method="_on_item_body_entered"]
+[connection signal="hit" from="enemy" to="." method="_on_enemy_hit"]
+[connection signal="hit" from="enemy2" to="." method="_on_enemy_hit"]
+[connection signal="hit" from="enemy3" to="." method="_on_enemy_hit"]

@@ -301,6 +301,7 @@ offset_right = 511.0
 offset_bottom = 894.0
 scale = Vector2(0.05, 0.05)
 label_settings = SubResource("LabelSettings_m41qy")
+metadata/_edit_use_anchors_ = true
 
 [node name="Label2" type="Label" parent="Camera2D/player_status"]
 offset_left = -10.0
@@ -309,6 +310,7 @@ offset_right = 511.0
 offset_bottom = 1150.0
 scale = Vector2(0.05, 0.05)
 label_settings = SubResource("LabelSettings_m41qy")
+metadata/_edit_use_anchors_ = true
 
 [node name="game_over_arcade" parent="Camera2D" instance=ExtResource("7_s2jmr")]
 visible = false

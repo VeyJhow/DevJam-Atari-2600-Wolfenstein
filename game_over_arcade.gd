@@ -4,7 +4,7 @@ extends Node2D
 var points
 
 func _ready():
-	points = PointsManager.score - 250
+	points = PointsManager.score
 
 func _process(_delta):
 	label.text = str(points)

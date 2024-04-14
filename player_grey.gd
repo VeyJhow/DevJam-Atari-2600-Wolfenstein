@@ -4,7 +4,7 @@ class_name player_grey
 
 var speed = 300
 var points = 0
-var health = 0
+var health = 3
 var ammo = 0
 var running : bool = true
 
