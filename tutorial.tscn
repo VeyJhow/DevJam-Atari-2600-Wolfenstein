@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://dh2hsmar30uh2"]
+
+[ext_resource type="Script" path="res://tutorial.gd" id="1_ca2ux"]
+[ext_resource type="FontFile" uid="uid://byxfi3b16obej" path="res://assets/fonts/Pixellettersfull-BnJ5.ttf" id="1_mlw22"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6xx6f"]
+font = ExtResource("1_mlw22")
+font_size = 1000
+
+[node name="tutorial" type="Node2D"]
+script = ExtResource("1_ca2ux")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+scale = Vector2(0.05, 0.05)
+text = "Movimente usando as setas do teclado e use a barra de espaco
+para atirar
+
+Voce nao consegue matar os inimgos do lado de fora, mas os que
+estao dentro das salas sim
+
+Colete todos os dois itens importantes escondidos entre as quatro 
+salas para passar para a proxima fase, voce tambem pode coletar
+vida e municao ao longo do caminho
+
+Boa sorte soldado"
+label_settings = SubResource("LabelSettings_6xx6f")
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 905.0
+offset_top = 583.0
+offset_right = 3905.0
+offset_bottom = 1483.0
+scale = Vector2(0.05, 0.05)
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_mlw22")
+theme_override_font_sizes/font_size = 1000
+text = "Jogar"
+
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

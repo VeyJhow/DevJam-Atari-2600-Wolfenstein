@@ -9,6 +9,11 @@ var self_position
 var chase = false
 var direction
 @onready var search_area = $search_area
+@onready var sprite = $Sprite2D
+@onready var sprite2 = $Sprite2D2
+@onready var hit_area = $hit_area
+@onready var animplay = $AnimationPlayer
+@onready var audioplay = $AudioStreamPlayer
 
 func _ready():
 	player_position = track_position
@@ -35,3 +40,17 @@ func _on_SearchArea_exited(body):
 func _on_hit_area_body_entered(body):
 	if body is player_grey:
 		hit.emit()
+
+func _on_hurt_area_body_entered(body):
+	if body is knife:
+		enable_enemy()
+	elif body is bullet:
+		enable_enemy()
+
+func enable_enemy():
+	speed = 0
+	sprite.hide()
+	hit_area.set_collision_mask_value(1,false)
+	sprite2.show()
+	animplay.play("death")
+	audioplay.play()

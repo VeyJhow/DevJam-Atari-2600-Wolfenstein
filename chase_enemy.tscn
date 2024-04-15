@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7lxo06qcq3cs"]
+
+[ext_resource type="Script" path="res://chase_enemy.gd" id="1_l6sxb"]
+[ext_resource type="Texture2D" uid="uid://cibnvkbla2qdv" path="res://assets/sprites/enemy_02.png" id="2_j33rr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3hqk2"]
+size = Vector2(1152, 648)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_88fog"]
+radius = 70.0071
+
+[node name="chase_enemy" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_l6sxb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -1.5708
+texture = ExtResource("2_j33rr")
+
+[node name="search_area" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="search_area"]
+position = Vector2(575, 0)
+shape = SubResource("RectangleShape2D_3hqk2")
+
+[node name="hit_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hit_area"]
+shape = SubResource("CircleShape2D_88fog")
+
+[connection signal="body_entered" from="hit_area" to="." method="_on_hit_area_body_entered"]

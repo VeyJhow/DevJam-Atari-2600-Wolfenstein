@@ -14,6 +14,12 @@ var score_points : int = 0
 @onready var label = $Camera2D/player_status/Label
 @onready var label2 = $Camera2D/player_status/Label2
 @onready var game_over_window = $Camera2D/game_over_arcade
+@onready var symbol = $symbol
+@onready var symbol2 = $symbol2
+@onready var symbol3 = $symbol3
+@onready var symbol4 = $symbol4
+@onready var audioplay = $AudioStreamPlayer
+var options_scene = preload("res://scenes/menus/options_menu.tscn")
 var vertical_point_levels : Array = [preload("res://inside_levels_v/inside_level_v_1.tscn"),
 preload("res://inside_levels_v/inside_level_v_2.tscn"),
 preload("res://inside_levels_v/inside_level_v_3.tscn"),
@@ -68,7 +74,7 @@ func _ready():
 	add_child(horizontal_level_1)
 	add_child(horizontal_level_2)
 	vertical_level_1.add_health.connect(add_health_to_player)
-	vertical_level_2.add_points.connect(add_points_to_player)
+	vertical_level_2.add_points.connect(add_points_to_player_2)
 	horizontal_level_1.add_ammo.connect(add_ammo_to_player)
 	horizontal_level_2.add_points.connect(add_points_to_player)
 	vertical_level_1.add_hit.connect(player_hurt)
@@ -79,6 +85,13 @@ func _ready():
 	vertical_level_2.position = Vector2(1200,748)
 	horizontal_level_1.position = Vector2(1200,1496)
 	horizontal_level_2.position = Vector2(1200,2244)
+	patrol_bot.one = true
+	patrol_bot2.one = true
+	patrol_bot3.one = true
+	patrol_bot4.one = true
+	patrol_bot5.one = true
+	patrol_bot6.one = true
+	audioplay.play()
 
 func _process(_delta):
 	label.text = str(player.ammo)
@@ -208,14 +221,22 @@ func _on_return_area_8_body_entered(body):
 func add_points_to_player():
 	player.points += 1
 	score_points += 100
+	symbol4.hide()
+
+func add_points_to_player_2():
+	player.points += 1
+	score_points += 100
+	symbol2.hide()
 
 func add_health_to_player():
 	player.health += 1
 	score_points += 50
+	symbol.hide()
 
 func add_ammo_to_player():
 	player.ammo += 4
 	score_points += 50
+	symbol3.hide()
 
 func check_player_points():
 	if player.points == 2:
@@ -234,3 +255,11 @@ func _on_end_level_timeout():
 	PointsManager.health = player.health
 	PointsManager.save_score()
 	get_tree().change_scene_to_file(random_level.pick_random())
+
+func _on_options_button_pressed():
+	var options = options_scene.instantiate()
+	add_child(options)
+	get_tree().paused = true
+
+func _on_audio_stream_player_finished():
+	audioplay.play()

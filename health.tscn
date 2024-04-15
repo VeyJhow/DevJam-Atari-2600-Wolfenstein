@@ -1,14 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://cmfscuuy27tuj"]
-
-[ext_resource type="Texture2D" uid="uid://dhftfiuucghf0" path="res://icon.svg" id="1_h24sm"]
+[gd_scene load_steps=2 format=3 uid="uid://cmfscuuy27tuj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kjyr2"]
 radius = 64.0
 
 [node name="health" type="Area2D"]
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_h24sm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_kjyr2")

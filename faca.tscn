@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjktoou3lbxv4"]
+
+[ext_resource type="Texture2D" uid="uid://df008lo35rb66" path="res://assets/sprites/Espada.png" id="1_4yrku"]
+[ext_resource type="Script" path="res://faca.gd" id="1_i34w6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8d3pd"]
+size = Vector2(180, 30)
+
+[node name="faca" type="CharacterBody2D"]
+scale = Vector2(0.3, 0.3)
+collision_layer = 32
+collision_mask = 2
+script = ExtResource("1_i34w6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5, 0)
+shape = SubResource("RectangleShape2D_8d3pd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_4yrku")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

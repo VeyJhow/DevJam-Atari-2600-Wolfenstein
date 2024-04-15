@@ -1,0 +1,84 @@
+[gd_scene load_steps=11 format=3 uid="uid://cfomaty5chieb"]
+
+[ext_resource type="Texture2D" uid="uid://bljdyuam2xpsd" path="res://assets/sprites/menu_background.png" id="1_4myff"]
+[ext_resource type="Script" path="res://menu.gd" id="1_ka2pq"]
+[ext_resource type="Texture2D" uid="uid://covsdrj2ireyf" path="res://assets/sprites/logo.png" id="2_5mcvb"]
+[ext_resource type="FontFile" uid="uid://byxfi3b16obej" path="res://assets/fonts/Pixellettersfull-BnJ5.ttf" id="3_c5bbe"]
+[ext_resource type="Texture2D" uid="uid://bulg3bojugbim" path="res://assets/sprites/jogar.png" id="5_omhat"]
+[ext_resource type="Texture2D" uid="uid://jxvanj1dx6op" path="res://assets/sprites/score_label.png" id="6_wdspn"]
+[ext_resource type="Texture2D" uid="uid://bf35bxw5ykx42" path="res://assets/sprites/opções.png" id="6_xkn0r"]
+[ext_resource type="AudioStream" uid="uid://b8uxbmqfum46m" path="res://audio/Áudio-do-WhatsApp-de-2024-04-14-à_s_-17.51.06_5f49077a.wav" id="8_mtwmd"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gscdt"]
+font = ExtResource("3_c5bbe")
+font_size = 500
+font_color = Color(1, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_soepd"]
+font = ExtResource("3_c5bbe")
+font_size = 1000
+font_color = Color(1, 0, 0, 1)
+
+[node name="menu" type="Node2D"]
+script = ExtResource("1_ka2pq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+texture = ExtResource("1_4myff")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(229, 435)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_5mcvb")
+
+[node name="Label" type="Label" parent="Sprite2D2"]
+offset_left = -125.0
+offset_top = 90.0
+offset_right = 5039.0
+offset_bottom = 518.0
+scale = Vector2(0.05, 0.05)
+text = "Aperte espaco para continuar"
+label_settings = SubResource("LabelSettings_gscdt")
+
+[node name="Button" type="Button" parent="."]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 116.0
+offset_top = 381.0
+offset_right = 316.0
+offset_bottom = 445.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Button"]
+texture = ExtResource("5_omhat")
+offset = Vector2(100, 32)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Button"]
+texture = ExtResource("6_wdspn")
+offset = Vector2(109, 96)
+
+[node name="Label" type="Label" parent="Button/Sprite2D2"]
+offset_left = 190.0
+offset_top = 80.0
+offset_right = 1753.0
+offset_bottom = 935.0
+scale = Vector2(0.05, 0.05)
+label_settings = SubResource("LabelSettings_soepd")
+
+[node name="Button2" type="Button" parent="."]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 116.0
+offset_top = 508.0
+offset_right = 316.0
+offset_bottom = 572.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Button2"]
+texture = ExtResource("6_xkn0r")
+offset = Vector2(100, 32)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_mtwmd")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

@@ -1,9 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://cyjj6jrvfrb5q"]
+[gd_scene load_steps=10 format=3 uid="uid://cyjj6jrvfrb5q"]
 
 [ext_resource type="Script" path="res://scripts/menu_scripts/options_menu.gd" id="1_5g6ox"]
+[ext_resource type="FontFile" uid="uid://byxfi3b16obej" path="res://assets/fonts/Pixellettersfull-BnJ5.ttf" id="2_7y0c1"]
+[ext_resource type="Texture2D" uid="uid://bf35bxw5ykx42" path="res://assets/sprites/opções.png" id="2_djano"]
 [ext_resource type="PackedScene" uid="uid://d032sbti5oen" path="res://audio/volume_control.tscn" id="2_elwou"]
+[ext_resource type="Texture2D" uid="uid://dx3jc7weg5ad4" path="res://assets/sprites/credits_logo.png" id="2_ylug1"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_b64os"]
+font = ExtResource("2_7y0c1")
+
+[sub_resource type="LabelSettings" id="LabelSettings_wng10"]
+font = ExtResource("2_7y0c1")
+
+[sub_resource type="LabelSettings" id="LabelSettings_2w6d2"]
+font = ExtResource("2_7y0c1")
+
+[sub_resource type="LabelSettings" id="LabelSettings_006l5"]
+font = ExtResource("2_7y0c1")
 
 [node name="Menu" type="Control"]
+process_mode = 2
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,15 +28,77 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5g6ox")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 428.0
+offset_top = 149.0
+offset_right = 724.0
+offset_bottom = 499.0
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 456.0
+offset_top = 211.5
+offset_right = 696.0
+offset_bottom = 436.5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer2/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_ylug1")
+
+[node name="Label7" type="Label" parent="MarginContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer2/VBoxContainer"]
+layout_mode = 2
+text = "VeyJhow (Furlan) - Game design"
+label_settings = SubResource("LabelSettings_b64os")
+
+[node name="Label2" type="Label" parent="MarginContainer2/VBoxContainer"]
+layout_mode = 2
+text = "Gustavo Rocha - Programacao
+"
+label_settings = SubResource("LabelSettings_wng10")
+
+[node name="Label3" type="Label" parent="MarginContainer2/VBoxContainer"]
+layout_mode = 2
+text = "Junqueira - Audio visual
+"
+label_settings = SubResource("LabelSettings_2w6d2")
+
+[node name="Label4" type="Label" parent="MarginContainer2/VBoxContainer"]
+layout_mode = 2
+text = "Rodrigo Rocha - Audio visual"
+label_settings = SubResource("LabelSettings_006l5")
+
+[node name="Label8" type="Label" parent="MarginContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label5" type="Label" parent="MarginContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer2/VBoxContainer"]
+layout_mode = 2
+text = "VOLTAR"
+
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0
-offset_left = 470.0
-offset_top = 324.0
-offset_right = 623.0
-offset_bottom = 402.0
+offset_left = 476.0
+offset_top = 216.0
+offset_right = 676.0
+offset_bottom = 432.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_djano")
 
 [node name="master_label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -34,4 +112,20 @@ bus_name = "Master"
 layout_mode = 2
 text = "VOLTAR"
 
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "CREDITOS"
+
+[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "SAIR"
+
+[node name="quit" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "SAIR DO JOGO"
+
+[connection signal="pressed" from="MarginContainer2/VBoxContainer/Button" to="." method="_on_button_pressed_voltar"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Voltar" to="." method="_on_voltar_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/quit" to="." method="_on_quit_pressed"]

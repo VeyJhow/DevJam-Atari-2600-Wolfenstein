@@ -1,18 +1,33 @@
-[gd_scene load_steps=4 format=3 uid="uid://hevwhxrskx2v"]
+[gd_scene load_steps=6 format=3 uid="uid://hevwhxrskx2v"]
 
 [ext_resource type="Script" path="res://player_grey.gd" id="1_j6kmx"]
-[ext_resource type="Texture2D" uid="uid://cg7hy42cyifg8" path="res://assets/sprites/arcade_player_gray.png" id="1_om2pg"]
+[ext_resource type="Texture2D" uid="uid://ckulcjy88rv6r" path="res://assets/sprites/player.png" id="2_cix3a"]
+[ext_resource type="AudioStream" uid="uid://f4c75jebppmy" path="res://audio/118792__lmbubec__1_knife_slash_a.wav" id="3_4ex3b"]
+[ext_resource type="AudioStream" uid="uid://bx6ykbij7qgt" path="res://audio/578070__captaintrooper__pixel-shotgun-shoot.wav" id="4_uy4gc"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_f5l5m"]
-size = Vector2(8, 8)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sdba7"]
+size = Vector2(17, 15)
 
 [node name="player_grey" type="CharacterBody2D"]
 collision_layer = 17
 collision_mask = 12
 script = ExtResource("1_j6kmx")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_f5l5m")
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(4.76837e-07, -4.76837e-07)
+shape = SubResource("RectangleShape2D_sdba7")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_om2pg")
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_cix3a")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_4ex3b")
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_uy4gc")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

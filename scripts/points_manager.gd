@@ -4,6 +4,7 @@ const SAVEFILE = "user://player_score.save"
 var score = 0
 var ammo = 0
 var health = 3
+var high_score = 0
 
 func _ready():
 	load_score()
@@ -13,6 +14,7 @@ func save_score():
 	file.store_32(score)
 	file.store_32(ammo)
 	file.store_32(ammo)
+	file.store_32(high_score)
 
 func load_score():
 	var file = FileAccess.open(SAVEFILE,FileAccess.READ)

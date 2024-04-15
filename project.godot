@@ -13,11 +13,18 @@ config_version=5
 config/name="DevJam Atari 2600 Wolfenstein VCS"
 run/main_scene="res://test_1.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://assets/sprites/app_icon.png"
+config/windows_native_icon="res://app_icon.ico"
 
 [autoload]
 
 PointsManager="*res://scripts/points_manager.gd"
+
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/aspect="ignore"
+mouse_cursor/custom_image="res://mouse_icon.png"
 
 [rendering]
 

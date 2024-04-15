@@ -1,13 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://bw3itbfrtmhs7"]
+[gd_scene load_steps=7 format=3 uid="uid://bw3itbfrtmhs7"]
 
-[ext_resource type="Texture2D" uid="uid://bhwisdu2gemnv" path="res://assets/sprites/arcade_enemy_patrol.png" id="1_3o71p"]
 [ext_resource type="Script" path="res://patrol_bot.gd" id="1_hoaqu"]
+[ext_resource type="Texture2D" uid="uid://b8r4nfjqj840f" path="res://assets/sprites/enemy_01.png" id="2_aa4c6"]
+[ext_resource type="Texture2D" uid="uid://cibnvkbla2qdv" path="res://assets/sprites/enemy_02.png" id="3_v6ag1"]
+[ext_resource type="Texture2D" uid="uid://c6q36w32uyv8d" path="res://assets/sprites/enemy_03.png" id="4_aw454"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w33ex"]
-size = Vector2(32, 24)
+size = Vector2(37.5, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d2iyo"]
-size = Vector2(32, 24)
+size = Vector2(37.5, 24)
 
 [node name="patrol_bot" type="CharacterBody2D"]
 scale = Vector2(0.8, 0.8)
@@ -15,17 +17,31 @@ collision_layer = 2
 collision_mask = 6
 script = ExtResource("1_hoaqu")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_3o71p")
-
 [node name="player_area" type="Area2D" parent="."]
 collision_layer = 8
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player_area"]
+position = Vector2(1.78814e-06, 0)
 shape = SubResource("RectangleShape2D_w33ex")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.78814e-06, 0)
 shape = SubResource("RectangleShape2D_d2iyo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_aa4c6")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_v6ag1")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("4_aw454")
 
 [connection signal="body_entered" from="player_area" to="." method="_on_player_area_body_entered"]
