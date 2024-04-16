@@ -21,6 +21,8 @@ func _input(event):
 
 func _on_button_pressed():
 	PointsManager.score = 0
+	PointsManager.health = 3
+	PointsManager.ammo = 0
 	PointsManager.save_score()
 	get_tree().change_scene_to_file("res://intro.tscn")
 

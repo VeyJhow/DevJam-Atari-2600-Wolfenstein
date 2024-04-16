@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="DevJam Atari 2600 Wolfenstein VCS"
-run/main_scene="res://test_1.tscn"
+config/name="Uber Fall"
+run/main_scene="res://menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://assets/sprites/app_icon.png"
 config/windows_native_icon="res://app_icon.ico"
@@ -22,6 +22,7 @@ PointsManager="*res://scripts/points_manager.gd"
 
 [display]
 
+window/size/mode=3
 window/stretch/mode="viewport"
 window/stretch/aspect="ignore"
 mouse_cursor/custom_image="res://mouse_icon.png"

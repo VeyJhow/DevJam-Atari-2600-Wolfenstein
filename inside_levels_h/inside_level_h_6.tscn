@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://5pmdmj5q2obg" path="res://enemy.tscn" id="4_n8aix"]
 [ext_resource type="Texture2D" uid="uid://ck782qr2oib5v" path="res://assets/sprites/item_06.png" id="4_so1dv"]
 [ext_resource type="TileSet" uid="uid://ctvsdwcqmsikv" path="res://assets/sprites/tileset/tileset_uber.tres" id="5_w7p4q"]
-[ext_resource type="Texture2D" uid="uid://drp0g0qxbm66v" path="res://assets/sprites/item_02.png" id="6_wealg"]
+[ext_resource type="Texture2D" uid="uid://dgh07qddvc820" path="res://assets/sprites/escorpiao.png" id="6_0yf75"]
 [ext_resource type="PackedScene" uid="uid://c7lxo06qcq3cs" path="res://chase_enemy.tscn" id="7_pt84l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fqfgv"]
@@ -95,24 +95,21 @@ position = Vector2(623, 564)
 scale = Vector2(0.7, 0.7)
 
 [node name="Sprite2D" type="Sprite2D" parent="enemy"]
-scale = Vector2(2, 2)
-texture = ExtResource("6_wealg")
+texture = ExtResource("6_0yf75")
 
 [node name="enemy2" parent="." instance=ExtResource("4_n8aix")]
 position = Vector2(944, 74)
 scale = Vector2(0.7, 0.7)
 
 [node name="Sprite2D" type="Sprite2D" parent="enemy2"]
-scale = Vector2(2, 2)
-texture = ExtResource("6_wealg")
+texture = ExtResource("6_0yf75")
 
 [node name="enemy3" parent="." instance=ExtResource("4_n8aix")]
 position = Vector2(364, 72)
 scale = Vector2(0.7, 0.7)
 
 [node name="Sprite2D" type="Sprite2D" parent="enemy3"]
-scale = Vector2(2, 2)
-texture = ExtResource("6_wealg")
+texture = ExtResource("6_0yf75")
 
 [node name="TileMap" type="TileMap" parent="."]
 z_index = -1

@@ -263,6 +263,7 @@ func _on_options_button_pressed():
 	var options = options_scene.instantiate()
 	add_child(options)
 	get_tree().paused = true
+	options.position = Vector2(camera.position.x - 576,camera.position.y - 324)
 
 func _on_audio_stream_player_finished():
 	audioplay.play()
